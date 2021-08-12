@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>KEFIS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">KEFIS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/warehouse">WAREHOUSE</a>
+          <a class="nav-link" href="#">PENDING REORDERS</a>
+          <a class="nav-link" href="#">PROCESSED REORDERS</a>
+          <a class="nav-link text-primary" href="/">KEFIS STORE</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <form class="" action="/incrementor" method="post">
+
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ProductDetail</th>
+        <th scope="col">Price</th>
+        <th scope="col">ReoderLevel</th>
+        <th scope="col">ReorderQuantity</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+
+     <% for(let i=0; i<result.length; i++){ %>
+  <tr>
+       <th scope="row"><%=result[i].ProductDetail %></th>
+       <td name="price"><%=result[i].Price %></td>
+       <td><%=result[i].ReoderLevel %></td>
+       <td><%=result[i].ReorderQuantity %></td>
+         </tr>
+     <%}%>
+    </tbody>
+  </table>
+
+
+    <button type="submit" class="btn btn-primary" name="reducer">INCREAMENTOR</button>
+  </form>
+
+</body>
+
+</html>
