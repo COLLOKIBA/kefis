@@ -125,5 +125,5 @@ Product.updateMany({ReoderLevel:{$lte:49}},
     }res.redirect("/warehouse");
 });
 });
-app.listen(3000,function(){
+app.listen(process.env.PORT || 3000,function(){
 });
