@@ -11,15 +11,15 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">KEFIS</a>
+      <a class="navbar-brand" href="/">KEFIS</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="/warehouse">WAREHOUSE</a>
-          <a class="nav-link" href="#">PENDING REORDERS</a>
-          <a class="nav-link" href="#">PROCESSED REORDERS</a>
+          <a class="nav-link" href="pending">PENDING REORDERS</a>
+          <a class="nav-link" href="/processed">PROCESSED REORDERS</a>
           <a class="nav-link text-primary" href="/">KEFIS STORE</a>
         </div>
       </div>
@@ -34,7 +34,6 @@
         <th scope="col">ProductDetail</th>
         <th scope="col">Price</th>
         <th scope="col">ReoderLevel</th>
-        <th scope="col">ReorderQuantity</th>
       </tr>
     </thead>
     <tbody>
@@ -46,12 +45,10 @@
        <th scope="row"><%=result[i].ProductDetail %></th>
        <td name="price"><%=result[i].Price %></td>
        <td><%=result[i].ReoderLevel %></td>
-       <td><%=result[i].ReorderQuantity %></td>
          </tr>
      <%}%>
     </tbody>
   </table>
-
 
     <button type="submit" class="btn btn-primary" name="reducer">INCREAMENTOR</button>
   </form>

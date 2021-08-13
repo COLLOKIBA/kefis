@@ -10,7 +10,7 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/kefisDB",{useNewUrlParser:true,useUnifiedTopology:true});
+mongoose.connect("mongodb+srv://collins:Test123@cluster0.mfxs3.mongodb.net/kefisDB",{useNewUrlParser:true,useUnifiedTopology:true});
 
 const productschema = {
   ProductDetail:String,QuantityPurchase:Number,Price:Number,
@@ -20,27 +20,27 @@ const productschema = {
 const Product = mongoose.model("product",productschema);
 
 const cheese = new Product({
-  ProductDetail:"Product1",Price:100,
+  ProductDetail:"MILK",Price:100,
   ReoderLevel:25,ReorderQuantity:100
 });
 
 const bread = new Product({
-  ProductDetail:"Product2",Price:200,
+  ProductDetail:"COOKING OIL",Price:200,
   ReoderLevel:50,ReorderQuantity:50
 });
 
 const brush = new Product({
-  ProductDetail:"Product3",Price:200,
+  ProductDetail:"WATER",Price:200,
   ReoderLevel:50,ReorderQuantity:50
 });
 
 const tomatoes = new Product({
-  ProductDetail:"Product4",Price:200,
+  ProductDetail:"RICE",Price:150,
   ReoderLevel:50,ReorderQuantity:50
 });
 
 const onions = new Product({
-  ProductDetail:"Product5",Price:200,
+  ProductDetail:"MEAT",Price:300,
   ReoderLevel:50,ReorderQuantity:50
 });
 
@@ -74,13 +74,31 @@ Product.find({},function(err,result){
     res.render("warehouse.ejs",{result:result})
 });
 
-})
+});
+
+
+app.get("/pending",function(req,res){
+  Product.find({ReoderLevel:"10"},function(err,result){
+      res.render("pending.ejs",{result:result})
+      console.log(result)
+  });
+});
+
+
+app.get("/processed",function(req,res){
+  Product.find({ReoderLevel:"100"},function(err,result){
+      res.render("processed.ejs",{result:result})
+  });
+});
+
+
 
 app.post("/",function(req,res){
   // Find all documents matching the
 // condition and update all
 // This function has 4 parameters i.e.
 // filter, update, options, callback
+
 Product.updateMany({ReoderLevel:{$gte:49}},
     {ReoderLevel:"10"}, function (err, prices) {
     if (err){
